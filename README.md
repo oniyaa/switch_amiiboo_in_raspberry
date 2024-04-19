@@ -1,3 +1,89 @@
+# QUICK LOOK #
+
+
+# PC CLIENT #
+1.install lib
+```bash
+sudo apt install python3-dbus libhidapi-hidraw0 libbluetooth-dev bluez
+```
+```bash
+sudo pip3 install aioconsole hid crc8
+```
+
+2.change file
+```bash
+sudo nano /lib/systemd/system/bluetooth.service
+```
+
+change line "ExecStart=/usr/lib/bluetooth/bluetoothd"  -->  "ExecStart=/usr/lib/bluetooth/bluetoothd -C -P sap,input,avrcp"
+
+
+3.restart service
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart bluetooth.service
+```
+# SWITCH Console #
+open "Change Grip/Order" menu
+
+
+
+# PC CLIENT #
+1. start script
+```bash
+sudo python3 run_controller_cli.py PRO_CONTROLLER
+```
+
+  or reconnect
+```bash
+sudo python3 run_controller_cli.py PRO_CONTROLLER -r auto
+```
+
+2. add nfc example:
+
+```bash
+nfc a.bin
+```
+
+or
+
+```bash
+nfc /home/raspberry/a.bin
+```
+
+3. using keyboard control your switch. 
+a = button A,
+b = button B,
+x = button x,
+y = button y,
+up = ^,
+down = v,
+left = <-,
+right = ->,
+....
+
+4. remove nfc
+```bash
+remove
+```
+
+5. exit script
+
+```bash
+exit
+```
+
+6. reconnection
+
+```bash
+sudo python3 run_controller_cli.py PRO_CONTROLLER -r auto
+```
+
+
+
+
+
+
 # joycontrol
 
 Branch: master->amiibo_edits
